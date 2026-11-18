@@ -94,7 +94,7 @@ a { color: var(--accent-text); }
 
 /* ================= WELCOME ================= */
 .intro { background: var(--rail-bg); color: var(--rail-ink); min-height: 100vh; overflow: hidden; }
-.hero { position: relative; height: clamp(260px, min(26vw, 40vh), 400px); overflow: hidden; isolation: isolate; }
+.hero { position: relative; height: clamp(260px, min(33.4vw, 56vh), 760px); overflow: hidden; isolation: isolate; }
 .hero-img { position: absolute; inset: 0; z-index: -3; background: var(--banner) 50% 0% / cover no-repeat; transition: filter 0.9s ease; }
 @keyframes drift { from { transform: scale(1); } to { transform: scale(1.06); } }
 .hero-tint { position: absolute; inset: 0; z-index: -2; opacity: 0; mix-blend-mode: multiply; transition: opacity 0.9s ease; pointer-events: none; }
@@ -115,38 +115,40 @@ a { color: var(--accent-text); }
 .hero[data-light="Evenings beneath the lights"] .hero-tint { opacity: 1; background: linear-gradient(180deg, rgba(60, 70, 150, 0.75), rgba(30, 40, 110, 0.55)); }
 .hero[data-light="Evenings beneath the lights"] .hero-lights { opacity: 1; animation: glow 4s ease-in-out infinite alternate; }
 @keyframes glow { from { opacity: 0.75; } to { opacity: 1; } }
-.hero::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(180deg, rgba(5, 36, 33, 0.5), rgba(5, 36, 33, 0) 20%, rgba(10, 74, 69, 0) 76%, var(--rail-bg) 100%); }
+.hero::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(180deg, rgba(5, 36, 33, 0.5), rgba(5, 36, 33, 0) 20%, rgba(10, 74, 69, 0) 90%, var(--rail-bg) 100%); }
 .hero-top { position: absolute; z-index: 2; top: 0; left: 0; right: 0; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 18px; padding-top: calc(18px + env(safe-area-inset-top, 0px)); padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
 .hero-top .logo { width: clamp(110px, 13vw, 168px); }
 .hero-top .ar { font-size: clamp(17px, 2vw, 22px); color: #fff; text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4); }
-.light-switch { position: absolute; z-index: 3; bottom: 78px; right: max(16px, env(safe-area-inset-right, 0px)); display: flex; align-items: center; gap: 4px; padding: 5px; border-radius: 999px; background: rgba(5, 36, 33, 0.62); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+.light-switch { position: absolute; z-index: 3; top: 100px; right: max(16px, env(safe-area-inset-right, 0px)); display: flex; align-items: center; gap: 4px; padding: 5px; border-radius: 999px; background: rgba(5, 36, 33, 0.62); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
 .light-switch .cap { padding: 0 10px 0 12px; font-size: 12.5px; font-weight: 600; color: var(--rail-muted); letter-spacing: 0.04em; }
+@media (max-width: 1279px) { .light-switch .cap { display: none; } }
+@media (max-width: 900px) { .light-switch { display: none; } }
 .lp { position: relative; }
 .lp input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
 .lp span { display: block; padding: 8px 14px; border-radius: 999px; font-size: 13.5px; font-weight: 700; color: var(--rail-ink); transition: background 0.2s, color 0.2s; white-space: nowrap; }
 .lp input:checked + span { background: var(--sun); color: #0e2f2b; }
 .lp input:focus-visible + span { outline: 3px solid #fff; outline-offset: 1px; }
 @media (max-width: 640px) {
-  .hero { height: calc(62px + env(safe-area-inset-top, 0px) + clamp(210px, 60vw, 290px)); }
+  .hero { height: calc(62px + env(safe-area-inset-top, 0px) + 51.3vw); }
   .hero-top { position: absolute; background: var(--rail-bg); padding-block: 0; padding-top: env(safe-area-inset-top, 0px); height: calc(62px + env(safe-area-inset-top, 0px)); box-sizing: border-box; }
-  .hero-img, .hero-tint, .hero-lights { top: calc(62px + env(safe-area-inset-top, 0px)); background-position: 50% 0%; }
+  .hero-img, .hero-tint, .hero-lights { top: calc(62px + env(safe-area-inset-top, 0px)); background-position: 57% 0%; }
+  .hero-img { background-size: 154% auto; }
   .hero::after { top: calc(62px + env(safe-area-inset-top, 0px)); }
   .hero-top .logo { width: 104px; }
-  .light-switch { left: auto; right: 12px; bottom: 46px; padding: 3px; gap: 2px; }
+  .light-switch { display: none; }
   .light-switch .cap { display: none; }
   .lp span { padding: 6px 10px; font-size: 12.5px; }
 }
 
 .intro-wrap { max-width: 1180px; margin: 0 auto; padding-bottom: 36px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
-.intro-card { position: relative; z-index: 4; margin-top: -56px; background: var(--surface); color: var(--ink); border-radius: 28px; padding: clamp(24px, 3.6vw, 52px); display: grid; gap: clamp(28px, 4vw, 56px); grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); align-items: center; box-shadow: 0 28px 70px rgba(0, 0, 0, 0.3); }
-@media (max-width: 860px) { .intro-card { grid-template-columns: minmax(0, 1fr); margin-top: -34px; border-radius: 22px; } }
+.intro-card { position: relative; z-index: 4; margin-top: -28px; background: var(--surface); color: var(--ink); border-radius: 28px; padding: clamp(24px, 3.6vw, 52px); display: grid; gap: clamp(28px, 4vw, 56px); grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); align-items: center; box-shadow: 0 28px 70px rgba(0, 0, 0, 0.3); }
+@media (max-width: 860px) { .intro-card { grid-template-columns: minmax(0, 1fr); margin-top: -18px; border-radius: 22px; } }
 .ribbon { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin-bottom: 18px; font-size: 14px; font-weight: 600; color: var(--accent-text); }
 .ribbon b { background: var(--sun); color: #0e2f2b; padding: 5px 12px; border-radius: 999px; font-size: 12.5px; letter-spacing: 0.1em; text-transform: uppercase; }
 .ribbon .ar { font-size: 17px; }
+.welcome-tag { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin-bottom: 18px; font-size: 14px; font-weight: 600; color: var(--accent-text); }
+.welcome-tag b { background: var(--sun); color: #0e2f2b; padding: 6px 13px; border-radius: 999px; font-size: 12.5px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; }
 .intro-card h1 { font-size: clamp(2.1rem, 4vw, 3.4rem); line-height: 1.04; font-weight: 700; }
-.welcome-tag { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 16px; font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-text); }
-.welcome-tag::before { content: ""; width: 26px; height: 2px; border-radius: 2px; background: var(--accent-text); }
-@media (max-width: 480px) { .welcome-tag { font-size: 12px; letter-spacing: 0.1em; margin-bottom: 14px; } .welcome-tag::before { display: none; } }
 .intro-card h1 em { font-style: normal; background: linear-gradient(transparent 62%, rgba(255, 242, 3, 0.85) 62% 92%, transparent 92%); padding: 0 2px; }
 .intro-card .lede { margin-top: 18px; color: var(--muted); font-size: 18px; line-height: 1.55; max-width: 46ch; }
 .cta-row { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; margin-top: 30px; }
@@ -163,6 +165,10 @@ a { color: var(--accent-text); }
 .need li span { display: block; color: var(--muted); font-size: 14.5px; line-height: 1.4; margin-top: 2px; }
 .need .after { margin-top: 6px; padding-top: 16px; border-top: 1px dashed var(--line); font-size: 14.5px; color: var(--muted); line-height: 1.5; }
 .need .after b { display: inline; color: var(--ink); }
+.begin-float { position: fixed; z-index: 45; left: 50%; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 26px; border: 0; border-radius: 999px; background: var(--sun); color: var(--sun-ink); font: 700 17px/1 var(--font-body); cursor: pointer; box-shadow: 0 2px 0 rgba(14, 47, 43, 0.9), 0 14px 34px rgba(0, 0, 0, 0.35); animation: floatIn 0.35s ease both; }
+.begin-float svg { width: 20px; height: 20px; }
+.begin-float:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+@keyframes floatIn { from { opacity: 0; transform: translate(-50%, 14px); } to { opacity: 1; transform: translate(-50%, 0); } }
 .chapters-strip { margin-top: 44px; }
 .chapters-strip h2 { font-size: clamp(1.35rem, 2.4vw, 1.8rem); font-weight: 700; color: var(--rail-ink); }
 .chapters-strip p { color: var(--rail-muted); margin-top: 6px; max-width: 60ch; }
@@ -453,9 +459,9 @@ details.more > .fields { padding: 0 0 18px; }
   <div class="intro-wrap">
     <div class="intro-card">
       <div>
-        <div class="welcome-tag">Creator collaboration · Season 15</div>
+        <div class="welcome-tag"><b id="greet">Season 15</b><span>Creator collaboration</span></div>
         <h1>The garden has returned. <em>Tell its story</em> with us.</h1>
-        <p class="lede">Season 15 is open until 31 May 2027, with a new theme every week. Tell us where you share your work, and we will write to you when a collaboration fits.</p>
+        <p class="lede">Season 15 runs until 31 May 2027, with a new theme every week. Tell us where you share your work, and our marketing team will be in touch if a collaboration fits.</p>
         <div class="cta-row">
           <button type="button" class="btn primary big" id="begin"><span id="beginLabel">Begin</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -466,19 +472,19 @@ details.more > .fields { padding: 0 0 18px; }
       <aside class="need" aria-labelledby="needT">
         <h2 id="needT">Have these ready</h2>
         <ul>
-          <li><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.07 0l2.83-2.83a5 5 0 0 0-7.07-7.07L11.5 4.43"/><path d="M14 11a5 5 0 0 0-7.07 0L4.1 13.83a5 5 0 0 0 7.07 7.07l1.33-1.33"/></svg></span><div><b>Your main channel link</b><span>Instagram, TikTok, YouTube or similar.</span></div></li>
+          <li><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.07 0l2.83-2.83a5 5 0 0 0-7.07-7.07L11.5 4.43"/><path d="M14 11a5 5 0 0 0-7.07 0L4.1 13.83a5 5 0 0 0 7.07 7.07l1.33-1.33"/></svg></span><div><b>Your main channel link</b><span>Instagram, TikTok, YouTube or any channel you use.</span></div></li>
           <li><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span><div><b>Your approximate reach</b><span>A rough number is fine.</span></div></li>
-          <li><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M7 10h4M7 14h3M15 10.5h2"/></svg></span><div><b>Your UAE media permit</b><span>If you have one. No permit yet? You are still welcome.</span></div></li>
+          <li><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M7 10h4M7 14h3M15 10.5h2"/></svg></span><div><b>Your UAE media permit</b><span>The UAE Media Council Advertiser Permit, if you hold one. No permit yet? You can still send your profile.</span></div></li>
           <li><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.7.6 1.1 1.3 1.1 2.2h5c0-.9.4-1.6 1.1-2.2A6 6 0 0 0 12 3z"/></svg></span><div><b>A collaboration idea</b><span>Optional, but we love hearing one.</span></div></li>
         </ul>
-        <p class="after"><b>What happens next:</b> our marketing team reads every profile and writes to you when a collaboration fits.</p>
+        <p class="after"><b>What happens next:</b> our marketing team reviews submissions and contacts creators when a collaboration fits. Sending this form does not guarantee a collaboration.</p>
       </aside>
     </div>
 
     <section class="chapters-strip" aria-labelledby="chTitle">
-      <h2 id="chTitle">A new chapter every week</h2>
-      <p>The season is told in weekly themes, tied to the calendar of the city. The first chapters:</p>
-      <div class="chip-row"><span>Pink October</span><span>United Nations Day</span><span>UAE Flag Day</span><span>Diwali</span><span>Dubai Fitness Challenge</span><span class="soft">More through to 31 May 2027</span></div>
+      <h2 id="chTitle">A new theme every week</h2>
+      <p>For the first time, every week of Season 15 has its own theme, bringing flowers together with music, art and community. Announced so far:</p>
+      <div class="chip-row"><span>Pink October</span><span>United Nations Day</span><span>UAE Flag Day</span><span>Diwali</span><span>Dubai Fitness Challenge</span><span>Commemoration Day</span><span>Eid Al Etihad</span><span class="soft">More through to 31 May 2027</span></div>
     </section>
 
     <section class="facts4" aria-label="The garden in numbers">
@@ -487,6 +493,8 @@ details.more > .fields { padding: 0 0 18px; }
       <div><b>72,000 m²</b><span>in Al Barsha South 3</span></div>
       <div><b>50+</b><span>floral displays</span></div>
     </section>
+
+    <button type="button" class="begin-float" id="beginFloat" hidden><span id="beginFloatLabel">Begin</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
 
     <div class="intro-foot"><span>Dubai Miracle Garden · Dubai Butterfly Garden · Cityland Mall</span><a id="privacyIntro" href="https://www.dubaimiraclegarden.com/privacy" target="_blank" rel="noopener">Privacy policy</a></div>
   </div>
@@ -1002,9 +1010,8 @@ const SERVER_CFG = {"social":[{"key":"instagram","label":"Instagram","url":"http
   }
   (function greet() {
     var h = new Date().getHours(), el = $('#greet');
-    var base = h < 5 ? 'Welcome to the garden' : h < 12 ? 'Good morning from Dubai' : h < 18 ? 'Good afternoon from Dubai' : 'Good evening from Dubai';
-    var sd = seasonDay();
-    if (el) el.textContent = base + (sd.day >= 1 && sd.day <= sd.total ? ' · day ' + sd.day + ' of Season 15' : '');
+        var sd = seasonDay();
+    if (el) el.textContent = (sd.day >= 1 && sd.day <= sd.total) ? 'Day ' + sd.day + ' of Season 15' : 'Season 15';
     var cap = $('#railCap');
     if (cap && sd.day >= 1 && sd.day <= sd.total) {
       cap.innerHTML = '8 October 2026 to 31 May 2027<span class="season-clock"><span>Day ' + sd.day + ' of ' + sd.total + '</span><span class="track" aria-hidden="true"><i style="--p:' + Math.max(3, Math.round(sd.day / sd.total * 100)) + '%"></i></span></span>';
@@ -1138,6 +1145,15 @@ const SERVER_CFG = {"social":[{"key":"instagram","label":"Instagram","url":"http
     go(0);
   }
   $('#begin').addEventListener('click', begin);
+  (function floatBegin() {
+    var fl = $('#beginFloat'), main = $('#begin'); if (!fl || !main || !('IntersectionObserver' in window)) return;
+    fl.addEventListener('click', function () { main.click(); });
+    new IntersectionObserver(function (es) {
+      var e = es[0];
+      $('#beginFloatLabel').textContent = $('#beginLabel').textContent;
+      fl.hidden = !(!e.isIntersecting && e.boundingClientRect.top > 0 && !intro.hidden);
+    }, { threshold: 0 }).observe(main);
+  })();
 
   /* ---------- navigation ---------- */
   function render() {
